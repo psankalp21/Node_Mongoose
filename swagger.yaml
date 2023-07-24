@@ -10,8 +10,6 @@ components:
   schemas:
     UserSignup:
       properties:
-        _id:
-          type: object
         name:
           type: string
         email:
@@ -83,22 +81,13 @@ paths:
       responses:
         '201':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserResponse'
+
         '400':
           description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+         
         '500':
           description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+        
 
   /login:
     post:
@@ -113,25 +102,13 @@ paths:
               $ref: '#/components/schemas/UserLogin'
       responses:
         '201':
-          description: User login successful
+          description: Success
+          
         '400':
           description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+         
         '500':
           description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
 
   /post:
     post:
@@ -146,20 +123,14 @@ paths:
               $ref: '#/components/schemas/CreatePost'
       responses:
         '201':
-          description: Post creation successful
-  
+          description: Success
+          
         '400':
           description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+         
         '500':
           description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+
   /follow:
     post:
       summary: follow a user
@@ -174,19 +145,9 @@ paths:
       responses:
         '201':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserResponse'
+          
         '400':
           description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+         
         '500':
           description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
