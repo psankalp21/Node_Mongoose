@@ -1,0 +1,188 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Instagram with MongoDB",
+      "description": "Nodejs project with mongoose"
+    },
+    "components": {
+      "schemas": {
+        "UserSignup": {
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            },
+            "about": {
+              "type": "string"
+            },
+            "profilePicture": {
+              "type": "string"
+            }
+          },
+          "required": ["name", "email", "password"]
+        },
+        "UserLogin": {
+          "properties": {
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          },
+          "required": ["email", "password"]
+        },
+        "CreatePost": {
+          "type": "object",
+          "properties": {
+            "userId": {
+              "type": "string"
+            },
+            "content": {
+              "type": "string"
+            },
+            "caption": {
+              "type": "string"
+            }
+          },
+          "required": ["userId", "content"]
+        },
+        "Follow": {
+          "properties": {
+            "senderId": {
+              "type": "object"
+            },
+            "recieverId": {
+              "type": "object"
+            },
+            "status": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string"
+            },
+            "updatedAt": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "paths": {
+      "/signup": {
+        "post": {
+          "summary": "Signup a new account",
+          "requestBody": {
+            "description": "create profile",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSignup"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Success"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/login": {
+        "post": {
+          "summary": "User login",
+          "requestBody": {
+            "description": "User details required for login",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserLogin"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Success"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/post": {
+        "post": {
+          "summary": "Create post",
+          "requestBody": {
+            "description": "Post content and description",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatePost"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Success"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/follow": {
+        "post": {
+          "summary": "Follow a user",
+          "requestBody": {
+            "description": "Follow a user",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Follow"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Success"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  }
+  
